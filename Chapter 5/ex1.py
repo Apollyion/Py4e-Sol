@@ -9,14 +9,15 @@ total, counter, average = 0, 0, 0
 
 while True:
 
-    line = input("Enter a number: ")
-    if line == "done":
+    number = input("Enter a number: ")
+    if number == "done":
+        print("\nTotal, Amount of Numbers and Average:\n")
         break
     try:
-        total = total + int(line)
+        total = total + int(number)
         counter = counter + 1
-    except:
-        print("Invalid Input") 
+    except ValueError:
+        print("Invalid Input")
 
 average = total / counter
 print(total, counter, average)

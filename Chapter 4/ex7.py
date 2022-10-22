@@ -1,25 +1,29 @@
 # Exercise 7: Rewrite the grade program from the 
 # previous chapter using a function called 
-# computegrade that takes a score as its 
+# compute_grade that takes a score as its
 # parameter and returns a grade as a string.
 
-def computegrade(grade):
-    if score >= 0.9:
+def compute_grade(grade: float):
+    if 0.9 <= grade <= 1:
         print("A")
-    elif score >= 0.8:
+    elif grade >= 0.8:
         print("B")
-    elif score >= 0.7:
+    elif grade >= 0.7:
         print("C")
-    elif score >= 0.6:
+    elif grade >= 0.6:
         print("D")
-    elif score < 6:
+    elif grade < 0.6:
         print("F")
 
+
 try:
-    score = float(input("Enter Score: "))
-except:
-    print("Error, enter valid value!")
-    quit()
-
-computegrade(score)
-
+    while True:
+        try:
+            score = float(input("Enter Score: "))
+            if score > 1:
+                raise ValueError("Bad Score!")
+            compute_grade(score)
+        except ValueError:
+            print("Bad Score!")
+except KeyboardInterrupt:
+    print("Exiting...")
